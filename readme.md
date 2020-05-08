@@ -12,6 +12,9 @@ Sqlite3
 Las librerías necesarias están vinculadas al pom.xml.
 
 ## Creación de base de datos
+En el proyecto quiero recalcar que ya tenemos el archivo **compra.db** asi que si tenemos dicho fichero el paso siguiente **no es necesario hacerlo.**
+**IMPORTANTE**
+Si no tenemos el archivo por cualquier motivo pueden seguir estas indicaciones:
 Necesitamos crear base de datos en SQLite. Este script de java nos serviría para ello.
 Lo creamos y lo llamamos JDBC.java
 ```
@@ -96,8 +99,8 @@ Una vez que ya se acaban con las entradas, existe la posibilidad de consultar lo
 
 ## Cambios anteriores redactados:
 Los cambios para la v0.2:  
--Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db.  
--Pequeñas mejoras de código.
+*Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db. *
+*Pequeñas mejoras de código.*
 ## Cambios en progreso fecha 2020:
 *In progress*
 
