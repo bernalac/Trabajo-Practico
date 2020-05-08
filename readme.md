@@ -1,43 +1,66 @@
-# Trabajo Práctico 7 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Trabajo Final Tienda 
+Este trabajo práctico ha sido realizado para el módulo de programación del primer curso de desarrollo de aplicaciones web.
+Es un proyecto maven.
 
-Este trabajo práctico ha sido realizado para el módulo de programación.
+## Requisitos:
+Qué cosas necesitamos antes de empezar:
 
-## Antes de ejecutar:
-
-Usar [javac](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) para compilar.  
-[Aquí](http://somebooks.es/instalar-jdk-windows-10/) dejo un tutorial para poder tener listo el compilador en Windows 10.
-
-Para poder compilar y ejecutar el proyecto se tiene que tener las variables de entorno preparadas, para ello, sino se tiene ya configurado, hay un link a un tutorial.  
-**Para ejecutarlo ponemos este comando para Linux:**
-```bash
-$ javac -cp .:json-20180813.jar:sqlite-jdbc-3.25.2.jar:. tienda.java  
-$ java -cp .:json-20180813.jar:sqlite-jdbc-3.25.2.jar:. tienda
+Instalaciones:
 ```
-**Y para Windows:**
-```bash
-javac -cp .;json-20180813.jar;sqlite-jdbc-3.25.2.jar;. tienda.java  
-java -cp .;json-20180813.jar;sqlite-jdbc-3.25.2.jar;. tienda
+Sqlite3 
 ```
-Ejcutar a través de la línea de comandos de Windows o de la terminal de linux.
-## Para la base de datos:
-En el proyecto, existe un fichero inicial que se llama compra.db, que ya lleva introducida la base de datos y la tabla.
+Las librerías necesarias están vinculadas al pom.xml.
 
-**¿Que hacer en caso de no tener dicho fichero?**  
-Si no existe el fichero en la raiz del programa, este debe ser creado y llamado compra.db.  
-En Linux:
-```bash
-$ javac -cp .:json-20180813.jar:sqlite-jdbc-3.25.2.jar:. JDBC.java  
-$ java -cp .:json-20180813.jar:sqlite-jdbc-3.25.2.jar:. JDBC
+## Creación de base de datos
+Necesitamos crear base de datos en SQLite. Este script de java nos serviría para ello.
+Lo creamos y lo llamamos JDBC.java
 ```
-En Windows:
-```bash
-javac -cp .;json-20180813.jar;sqlite-jdbc-3.25.2.jar;. JDBC.java  
-java -cp .;json-20180813.jar;sqlite-jdbc-3.25.2.jar;. JDBC
+import java.sql.*;
+//esta clase es para crear la tabla. para poder hacerlo, primero hay que poseer un archivo con extension .db
+//en nuestro caso tenemos compra.db
+
+public class JDBC {
+	public static void main(String[] args) {
+		Connection conn = null;
+		try{
+			String url = "jdbc:sqlite:compra.db";
+			String sql = "CREATE TABLE IF NOT EXISTS compra (Cliente TEXT,Producto TEXT,Cantidad Double,Precio DOUBLE,ID INTEGER, Fecha TIMESTAMP);";
+			conn = DriverManager.getConnection(url);
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(sql);
+		}
+		catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+	}
+}
 ```
-Una vez hecho esto se creará el fichero compra.db, listo su uso.
+Una vez hecho esto, entramos en sqlite con el comando:
+```
+sqlite3 compra.db
+```
+Y visualizamos la tabla con el comando **.tables**.
+Debe de salir la tabla compra. Una vez ejecutado el programa podemos visualizar los datos que contiene nuestra base de datos de la siguiente forma:
+```
+sqlite3 compra.db
+select * from compra;
+```
+En estas URLs podemos visualizar la creación para saber más acerca de esto:
+
+* https://www.imaginanet.com/blog/primeros-pasos-con-sqlite3-comandos-basicos.html
+
+ 
+## Ejecución
+Para ejecutar, nos vamos al raíz del proyecto maven (donde visualizamos el pom.xml y la carpeta src) y ejecutamos los comandos siguientes:
+```
+$  mvn compile
+$  mvn dependency:copy-dependencies package
+$  java -cp target/nombre-archivo.jar:target/dependency/*:. tienda
+```
+
+
 ## ¿Qué se ha usado?
-Para este trabajo usamos JSON para leer el catálogo de productos y JDBC (Java Data Base Connectivity) para almacenar los pedidos en una base de datos.  
-Para poder ejecutar correctamente esta trabajo es necesario tener dos archivo .jar que hará posible el uso de [JSON](http://central.maven.org/maven2/org/json/json/20180813/json-20180813.jar) y de [JDBC](https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc/3.25.2).
+Para este trabajo usamos JSON para leer el catálogo de productos y JDBC (Java Data Base Connectivity) para almacenar los pedidos en una base de datos. Están añadidas las dependencias en el fichero pom.xml.
 
 ## Contenido del proyecto:
 
@@ -52,8 +75,6 @@ Person.java     --> Objeto persona, que contiene el nombre de una persona.
 DAOCompra.java  --> Interface que se usará para hacer implementaciones de base de datos.
 
 JDBCCompra.java --> Contiene métodos para conectarse a la bd, para grabar, y para consultar la base de datos.
-
-JDBC.java       --> Sirve para crear la tabla "compra".
 
 productos.json  --> Aquí se guarda el catálogo de compras, en formato json.
 
@@ -73,13 +94,17 @@ El programa es capaz de que una persona, pueda tener uno o mas articulos, y tamb
 
 Una vez que ya se acaban con las entradas, existe la posibilidad de consultar los datos. Al ir por ese camino, se muestra un listado completo, mostrando todos los datos que hay guardados en la base de datos, y despues de eso, te ofrece 3 posibilidades: Consultar por nombre, Consultar por producto, y consultar por ID de compra. Finalmente, cuando ya no se quiere consultar mas, finaliza el programa.
 
-## Cambios:
+## Cambios anteriores redactados:
 Los cambios para la v0.2:  
 -Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db.  
 -Pequeñas mejoras de código.
+## Cambios en progreso fecha 2020:
+*In progress*
 
 ## Autores:
-Robert Marius Puiu (Enlazamiento entre código, mejoras y agregado de código adicional.)  
-Guillermo Pérez Aragón (Aportación de clases, DAOs, fechas y mejoras de código.)
+* **Robert Marius Puiu** - *Initial work* - *Enlazamiento entre código, mejoras y agregado de código adicional.*
+* **Guillermo Pérez Aragón** - *Initial work* - *Aportación de clases, DAOs, fechas y mejoras de código*
+* **Francisco Javier Bernal Ramírez** - *In progress * 
+* **Samuel Rivera Peñalosa** - *In progress* 
 
 &copy;
