@@ -15,6 +15,8 @@ Las librerías necesarias están vinculadas al pom.xml.
 
 ## Creación de base de datos
 En el proyecto quiero recalcar que ya tenemos el archivo **compra.db** asi que si tenemos dicho fichero el paso siguiente **no es necesario hacerlo.**
+
+
 **IMPORTANTE**
 
 
