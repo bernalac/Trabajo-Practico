@@ -117,6 +117,8 @@ Los cambios para la v0.2:
 *Pequeñas mejoras de código.*
 ## Cambios en progreso fecha 2020:
 *In progress*
+
+
 *Maven*
 
 ## Autores:
