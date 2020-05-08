@@ -1,5 +1,7 @@
 # Trabajo Final Tienda 
 Este trabajo práctico ha sido realizado para el módulo de programación del primer curso de desarrollo de aplicaciones web.
+
+
 Es un proyecto maven.
 
 ## Requisitos:
@@ -19,7 +21,9 @@ En el proyecto quiero recalcar que ya tenemos el archivo **compra.db** asi que s
 Si no tenemos el archivo por cualquier motivo pueden seguir estas indicaciones:
 
 
-Necesitamos crear base de datos en SQLite. Este script de java nos serviría para ello.
+Necesitamos crear base de datos en SQLite. 
+
+Este script de java nos serviría para ello.
 Lo creamos y lo llamamos JDBC.java
 ```
 import java.sql.*;
@@ -47,7 +51,11 @@ Una vez hecho esto, entramos en sqlite con el comando:
 sqlite3 compra.db
 ```
 Y visualizamos la tabla con el comando **.tables**.
-Debe de salir la tabla compra. Una vez ejecutado el programa podemos visualizar los datos que contiene nuestra base de datos de la siguiente forma:
+
+
+Debe de salir la tabla compra. 
+
+Una vez ejecutado el programa podemos visualizar los datos que contiene nuestra base de datos de la siguiente forma:
 ```
 sqlite3 compra.db
 select * from compra;
@@ -107,6 +115,7 @@ Los cambios para la v0.2:
 *Pequeñas mejoras de código.*
 ## Cambios en progreso fecha 2020:
 *In progress*
+*Maven*
 
 ## Autores:
 * **Robert Marius Puiu** - *Initial work* - *Enlazamiento entre código, mejoras y agregado de código adicional.*
