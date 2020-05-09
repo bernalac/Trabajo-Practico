@@ -14,10 +14,12 @@ Sqlite3
 MySql
 ```
 Sobre cómo instalar, os dejamos unos manuales:
-```
-* [install mysql](https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es)
-* [install sqlite](https://www.ochobitshacenunbyte.com/2019/10/01/instalacion-y-uso-basico-de-sqlite-en-ubuntu-18-04/)
-```
+
+https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es
+
+
+https://www.ochobitshacenunbyte.com/2019/10/01/instalacion-y-uso-basico-de-sqlite-en-ubuntu-18-04/
+
 
 
 
@@ -38,13 +40,15 @@ Para crear las bases de datos con ambos scripts necesitamos los drivers de mysql
 
 
 Podemos encontrar los drivers en estas URLs:
-```
-* https://mvnrepository.com/artifact/mysql/mysql-connector-java
-* https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
-```
+
+ https://mvnrepository.com/artifact/mysql/mysql-connector-java
+ 
+ 
+ https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
 
 
-*SQLITE*
+
+**SQLITE**
 
 
 *COMPILAR*
@@ -59,7 +63,7 @@ $ java -cp ~/misjars/*:. CompraSqlite
 
 
 
-*MYSQL*
+**MYSQL**
 
 
 COMPILAR
@@ -169,28 +173,16 @@ El programa es capaz de que una persona, pueda tener uno o mas articulos, y tamb
 Una vez que ya se acaban con las entradas, existe la posibilidad de consultar los datos. Al ir por ese camino, se muestra un listado completo, mostrando todos los datos que hay guardados en la base de datos, y despues de eso, te ofrece 3 posibilidades: Consultar por nombre, Consultar por producto, y consultar por ID de compra. Finalmente, cuando ya no se quiere consultar mas, finaliza el programa.
 
 ## Cambios anteriores redactados:
-Los cambios para la v0.2:  
-*Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db. *
-
-
-*Pequeñas mejoras de código.*
+Los cambios para la v0.2: 
+- Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db
+- Pequeñas mejoras de código.
 ## Cambios en progreso fecha 2020 *In Progress*:
-*Parametrización de datos de bases de datos en fichero Beans.xml, carpeta Resources*
-
-
-*Arreglar fallos de orden de comandos, concretamente en el archivo JDBCCompra.java, donde los ResultSet de dos métodos no estaban correctos*
-
-
-*Utilización de más de una base de datos*
-
-
-*Utilización de Spring Framework*
-
-
-*Añadido reglas de sintaxis en las órdenes condicionales (IgnoreCase) para una mejor interacción con el usuario*
-
-
-*Maven*
+* Parametrización de datos de bases de datos en fichero Beans.xml, carpeta Resources
+* Arreglar fallos de orden de comandos, concretamente en el archivo JDBCCompra.java, donde los ResultSet de dos métodos no estaban correctos
+* Utilización de más de una base de datos
+* Utilización de Spring Framework
+* Añadido reglas de sintaxis en las órdenes condicionales (IgnoreCase) para una mejor interacción con el usuario
+* Maven
 
 ## Autores:
 * **Robert Marius Puiu** - *Initial work* - *Enlazamiento entre código, mejoras y agregado de código adicional.*
