@@ -15,8 +15,8 @@ MySql
 ```
 Sobre cómo instalar, os dejamos unos manuales:
 ```
-* https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es
-* https://www.ochobitshacenunbyte.com/2019/10/01/instalacion-y-uso-basico-de-sqlite-en-ubuntu-18-04/
+* [install mysql](https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es)
+* [install sqlite](https://www.ochobitshacenunbyte.com/2019/10/01/instalacion-y-uso-basico-de-sqlite-en-ubuntu-18-04/)
 ```
 
 
@@ -44,8 +44,7 @@ Podemos encontrar los drivers en estas URLs:
 ```
 
 
-###SQLITE
-
+*SQLITE*
 
 
 *COMPILAR*
@@ -60,7 +59,9 @@ $ java -cp ~/misjars/*:. CompraSqlite
 
 
 
-###MYSQL
+*MYSQL*
+
+
 COMPILAR
 ```
 $ javac -cp ~/misjars/*:. CompraMysql.java
@@ -115,6 +116,8 @@ DESCRIBE compra;
 
 ## Antes de ejecutar
 *IMPORTANTE*
+
+
 En el fichero Beans.xml habra que elegir que base de datos queremos comentando una u otra.
 
 
@@ -168,13 +171,25 @@ Una vez que ya se acaban con las entradas, existe la posibilidad de consultar lo
 ## Cambios anteriores redactados:
 Los cambios para la v0.2:  
 *Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db. *
+
+
 *Pequeñas mejoras de código.*
 ## Cambios en progreso fecha 2020 *In Progress*:
 *Parametrización de datos de bases de datos en fichero Beans.xml, carpeta Resources*
+
+
 *Arreglar fallos de orden de comandos, concretamente en el archivo JDBCCompra.java, donde los ResultSet de dos métodos no estaban correctos*
+
+
 *Utilización de más de una base de datos*
+
+
 *Utilización de Spring Framework*
+
+
 *Añadido reglas de sintaxis en las órdenes condicionales (IgnoreCase) para una mejor interacción con el usuario*
+
+
 *Maven*
 
 ## Autores:
