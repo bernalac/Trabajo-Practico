@@ -1,23 +1,27 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.sql.*;
+import javax.sql.DataSource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 //aqui esta el codigo para grabar y consultar
 public class JDBCCompra implements DAOCompra{
 	private Connection conectar() {//se hace un metodo para la conexión, para asi no tener que copiar el codigo siempre
-		String url = "jdbc:sqlite:compra.db";
+		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(url);
-		} catch (SQLException e) {
+			DataSource ds = (DataSource) context.getBean("ds");;
+			conn = ds.getConnection();
+		} catch (Exception e) {
+			System.out.println("Tenemos un problema, no conecta");
 			System.out.println(e.getMessage());
 		}
 		return conn;
+
 	}
 
 
-/*
+
 	ArrayList<Integer> listaIDs= new ArrayList<Integer>();
 
 
@@ -38,7 +42,7 @@ public class JDBCCompra implements DAOCompra{
 			System.out.println(o.getMessage());
 		}
 	}
-*/
+
 
 	public void grabar(Compra c) {//codigo para grabar
 		java.sql.Timestamp sqlDate = new java.sql.Timestamp(c.getFecha().getTime());
@@ -79,9 +83,10 @@ public class JDBCCompra implements DAOCompra{
 			Connection conn = this.conectar();
 			PreparedStatement pstmt = conn.prepareStatement(sql2);
 			ResultSet rs = pstmt.executeQuery();
-			System.out.println("Cliente: "+rs.getString("Cliente"));
 			while (rs.next()) {	
-				 System.out.println(rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, con ID " + rs.getInt("ID") + " a fecha de " + rs.getTimestamp("Fecha"));
+				System.out.println("Cliente: "+rs.getString("Cliente"));
+
+				System.out.println(rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, con ID " + rs.getInt("ID") + " a fecha de " + rs.getTimestamp("Fecha"));
 
 			 }	
 		}
@@ -97,10 +102,10 @@ public class JDBCCompra implements DAOCompra{
 			Connection conn = this.conectar();
 			PreparedStatement pstmt = conn.prepareStatement(sql2);
 			ResultSet rs = pstmt.executeQuery();
-			System.out.println("ID: " + rs.getInt("ID"));
-			System.out.println("Esta ID le pertenece a: " + rs.getString("Cliente"));
 			while (rs.next()) {	
-				 System.out.println(rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, a fecha de " + rs.getTimestamp("Fecha"));
+				System.out.println("ID: " + rs.getInt("ID"));
+				System.out.println("Esta ID le pertenece a: " + rs.getString("Cliente"));
+				System.out.println(rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, a fecha de " + rs.getTimestamp("Fecha"));
 
 			 }	
 		}

@@ -8,10 +8,14 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.lang.Double;
+import javax.sql.DataSource;
 
 public class tienda{
 	public static void main(String args[]) throws Exception {
 		DAOCompra daocompra = new JDBCCompra();//creacion de DAO para lo relacionado con la base de datos
+//		@AutoWired
+//		DataSource ds;
+		
 		//a continuacion, el codigo para leer el fichero json, que corresponde al catalogo de productos.	
 		String line = new String("");
 		String lin = null;
@@ -28,7 +32,7 @@ public class tienda{
         		listaProds.add(nombre + ":" + precio);//los datos se pasan a una lista,para tenerlos guardados y poder usarlos
 
         			System.out.println(nombre + ": " + precio + " €");
-        		
+
         	}
         //una vez leidos y guardados, se empieza con la compra
 		Compra c;
@@ -79,7 +83,7 @@ public class tienda{
 				}
 				System.out.println("Mas articulos? S|N ");//Para agregar más articulos a la misma persona
 				String masart = console.readLine();
-				if(masart.equals("n")){
+				if(masart.equalsIgnoreCase("n")){
 					c.setArticulos(lista1);
 					break;
 				}
@@ -91,7 +95,7 @@ public class tienda{
 			}
 			System.out.println("Mas entradas? S|N ");//Para agregar más entradas (personas y articulos)
 			String masper = console.readLine();
-			if(masper.equals("n")){
+			if(masper.equalsIgnoreCase("n")){
 				break;
 			}
 		}
@@ -102,17 +106,17 @@ public class tienda{
 		while(true){//aqui es donde esta la parte de consultas.
 			System.out.println("Quieres consultar datos? S|N");
 			String respuesta = console.readLine();
-			if (respuesta.equals("s")){
+			if (respuesta.equalsIgnoreCase("s")){
 				daocompra.consultart();//te muestra todos los datos guardados
 				System.out.println("Para consultar por persona: N | Para mostrar por ID: I");
 				String respuesta2 = console.readLine();
-				if(respuesta2.equals("n")){
+				if(respuesta2.equalsIgnoreCase("n")){
 					System.out.println("Introduce nombre");
 					String r = console.readLine();
 					daocompra.consultarn(r);//te muestra los datos que contienen el nombre introducido
 				}
 				
-				else if(respuesta2.equals("i")){
+				else if(respuesta2.equalsIgnoreCase("i")){
 					System.out.println("Introduce id");
 					String r = console.readLine();
 					int r2=Integer.parseInt(r);
