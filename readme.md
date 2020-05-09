@@ -5,49 +5,73 @@ Este trabajo práctico ha sido realizado para el módulo de programación del pr
 Es un proyecto maven.
 
 ## Requisitos:
-Qué cosas necesitamos antes de empezar:
+Qué necesitamos antes de empezar:
 
 Instalaciones:
 ```
 Sqlite3 
+
+MySql
 ```
-Las librerías necesarias están vinculadas al pom.xml.
+Sobre cómo instalar, os dejamos unos manuales:
+```
+* https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es
+* https://www.ochobitshacenunbyte.com/2019/10/01/instalacion-y-uso-basico-de-sqlite-en-ubuntu-18-04/
+```
+
+
 
 ## Creación de base de datos
-En el proyecto quiero recalcar que ya tenemos el archivo **compra.db** asi que si tenemos dicho fichero el paso siguiente **no es necesario hacerlo.**
+Usaremos el script CompraSqlite.java si queremos crear la base de datos sqlite y el CompraMysql para crear la base de datos mysql.
+
+
+Ambos scripts están en la carpeta *crearBDs*
 
 
 **IMPORTANTE**
 
 
-Si no tenemos el archivo por cualquier motivo pueden seguir estas indicaciones:
+En el archivo CompraSqlite.java debemos cambiar la ruta de la url para que coincida con la vuestra.
 
 
-Necesitamos crear base de datos en SQLite. 
+Para crear las bases de datos con ambos scripts necesitamos los drivers de mysql y sqlite para compilar y ejecutar. Debemos de guardar en una carpeta llamada de la forma qu queramos los archivos .jars, por ejemplo nosotros la llamamos misjars.
 
-Este script de java nos serviría para ello.
-Lo creamos y lo llamamos JDBC.java
+
+Podemos encontrar los drivers en estas URLs:
 ```
-import java.sql.*;
-//esta clase es para crear la tabla. para poder hacerlo, primero hay que poseer un archivo con extension .db
-//en nuestro caso tenemos compra.db
-
-public class JDBC {
-	public static void main(String[] args) {
-		Connection conn = null;
-		try{
-			String url = "jdbc:sqlite:compra.db";
-			String sql = "CREATE TABLE IF NOT EXISTS compra (Cliente TEXT,Producto TEXT,Cantidad Double,Precio DOUBLE,ID INTEGER, Fecha TIMESTAMP);";
-			conn = DriverManager.getConnection(url);
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(sql);
-		}
-		catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-	}
-}
+* https://mvnrepository.com/artifact/mysql/mysql-connector-java
+* https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
 ```
+
+
+###SQLITE
+
+
+
+*COMPILAR*
+```
+$ javac -cp ~/misjars/*:. CompraSqlite.java
+```
+*EJECUTAR*
+
+```
+$ java -cp ~/misjars/*:. CompraSqlite
+```
+
+
+
+###MYSQL
+COMPILAR
+```
+$ javac -cp ~/misjars/*:. CompraMysql.java
+```
+
+EJECUTAR
+```
+$ java -cp ~/misjars/*:. CompraMysql
+```
+
+
 Una vez hecho esto, entramos en sqlite con el comando:
 ```
 sqlite3 compra.db
@@ -57,17 +81,48 @@ Y visualizamos la tabla con el comando **.tables**.
 
 Debe de salir la tabla compra. 
 
+
+
 Una vez ejecutado el programa podemos visualizar los datos que contiene nuestra base de datos de la siguiente forma:
 ```
 sqlite3 compra.db
 select * from compra;
 ```
-En estas URLs podemos visualizar la creación para saber más acerca de esto:
 
-* https://www.imaginanet.com/blog/primeros-pasos-con-sqlite3-comandos-basicos.html
+
+
+Para mysql entraremos con el siguiente comando
+```
+$ mysql -u root -p
+```
+Compobamos las base de datos con:
+```
+SHOW DATABASES;
+```
+Usamos la bd con:
+```
+USE compra;
+```
+Podemos ver la tabla con:
+```
+SHOW TABLE;
+```
+o con:
+```
+DESCRIBE compra;
+```
+
+
+## Antes de ejecutar
+*IMPORTANTE*
+En el fichero Beans.xml habra que elegir que base de datos queremos comentando una u otra.
+
+
+También habrá que cambiar la ruta de la base de datos sqlite para que coincida con la vuestra.
+
 
  
-## Ejecución
+## Ejecución del proyecto
 Para ejecutar, nos vamos al raíz del proyecto maven (donde visualizamos el pom.xml y la carpeta src) y ejecutamos los comandos siguientes:
 ```
 $  mvn compile
@@ -76,12 +131,11 @@ $  java -cp target/nombre-archivo.jar:target/dependency/*:. tienda
 ```
 
 
-## ¿Qué se ha usado?
-Para este trabajo usamos JSON para leer el catálogo de productos y JDBC (Java Data Base Connectivity) para almacenar los pedidos en una base de datos. Están añadidas las dependencias en el fichero pom.xml.
+
 
 ## Contenido del proyecto:
 
-Tienda.java     --> Es la clase principal, cuyo funcionamiento se explica más adelante.
+tienda.java     --> Es la clase principal, cuyo funcionamiento se explica más adelante.
 
 Compra.java     --> Crea un objeto compra, que contiene la clase Articulo, y la clase Persona implementadas.
 
@@ -95,7 +149,7 @@ JDBCCompra.java --> Contiene métodos para conectarse a la bd, para grabar, y pa
 
 productos.json  --> Aquí se guarda el catálogo de compras, en formato json.
 
-compra.db       --> Es el fichero de base de datos, que contiene la tabla "compra".
+
 
 ## Fin:
 Este programa tiene el fin de guardar una lista de compras o factura de compras.  
@@ -105,7 +159,7 @@ Una vez elegidos todos los productos, se mostrará el precio total por producto.
 Seguidamente nos dará la opción de visualizar la factura a través de una base de datos, donde se almacenan los datos de las facturas (persona, producto, cantidad, precio e ID).
 
 ## ¿Cómo funciona?
-En un principio, el programa Tienda.java coge informacion del fichero json, para asi poseer un catalogo de productos permitidos, que contienen nombre y precio. Una vez obtenido el catalogo, el programa hace una nueva compra(ahi es donde entran las clases Articulo,Compra, y Person), y empieza a pedir datos por teclado, para definir dicha compra(nombre de la persona, que articulo se quiere comprar, etc..).  
+En un principio, el programa tienda.java coge informacion del fichero json, para asi poseer un catalogo de productos permitidos, que contienen nombre y precio. Una vez obtenido el catalogo, el programa hace una nueva compra(ahi es donde entran las clases Articulo,Compra, y Person), y empieza a pedir datos por teclado, para definir dicha compra(nombre de la persona, que articulo se quiere comprar, etc..).  
 
 El programa es capaz de que una persona, pueda tener uno o mas articulos, y tambien puede tener una o mas compras(que estan distribuidos por ID) por lo que, se pueden repetir nombres en las personas.Cada vez que se hace una entrada, al finalizar, el programa guarda la informacion en la base de datos del fichero compra.db(aqui es donde se empieza a usar El fichero DAOCompra, y su implementación). 
 
@@ -115,10 +169,12 @@ Una vez que ya se acaban con las entradas, existe la posibilidad de consultar lo
 Los cambios para la v0.2:  
 *Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db. *
 *Pequeñas mejoras de código.*
-## Cambios en progreso fecha 2020:
-*In progress*
-
-
+## Cambios en progreso fecha 2020 *In Progress*:
+*Parametrización de datos de bases de datos en fichero Beans.xml, carpeta Resources*
+*Arreglar fallos de orden de comandos, concretamente en el archivo JDBCCompra.java, donde los ResultSet de dos métodos no estaban correctos*
+*Utilización de más de una base de datos*
+*Utilización de Spring Framework*
+*Añadido reglas de sintaxis en las órdenes condicionales (IgnoreCase) para una mejor interacción con el usuario*
 *Maven*
 
 ## Autores:
