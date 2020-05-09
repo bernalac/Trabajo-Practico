@@ -15,10 +15,10 @@ MySql
 ```
 Sobre cómo instalar, os dejamos unos manuales:
 
-https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es
+- https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es
 
 
-https://www.ochobitshacenunbyte.com/2019/10/01/instalacion-y-uso-basico-de-sqlite-en-ubuntu-18-04/
+- https://www.ochobitshacenunbyte.com/2019/10/01/instalacion-y-uso-basico-de-sqlite-en-ubuntu-18-04/
 
 
 
@@ -41,21 +41,21 @@ Para crear las bases de datos con ambos scripts necesitamos los drivers de mysql
 
 Podemos encontrar los drivers en estas URLs:
 
- https://mvnrepository.com/artifact/mysql/mysql-connector-java
+ - https://mvnrepository.com/artifact/mysql/mysql-connector-java
  
  
- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+ - https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
 
 
 
 **SQLITE**
 
 
-*COMPILAR*
+*Compilar*
 ```
 $ javac -cp ~/misjars/*:. CompraSqlite.java
 ```
-*EJECUTAR*
+*Ejecutar*
 
 ```
 $ java -cp ~/misjars/*:. CompraSqlite
@@ -66,12 +66,12 @@ $ java -cp ~/misjars/*:. CompraSqlite
 **MYSQL**
 
 
-COMPILAR
+*Compilar*
 ```
 $ javac -cp ~/misjars/*:. CompraMysql.java
 ```
 
-EJECUTAR
+*Ejecutar*
 ```
 $ java -cp ~/misjars/*:. CompraMysql
 ```
