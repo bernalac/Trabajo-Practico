@@ -124,7 +124,7 @@ Los cambios para la v0.2:
 ## Autores:
 * **Robert Marius Puiu** - *Initial work* - *Enlazamiento entre código, mejoras y agregado de código adicional.*
 * **Guillermo Pérez Aragón** - *Initial work* - *Aportación de clases, DAOs, fechas y mejoras de código*
-* **Francisco Javier Bernal Ramírez** - *In progress * 
+* **Francisco Javier Bernal Ramírez** - *In progress* 
 * **Samuel Rivera Peñalosa** - *In progress* 
 
 &copy;
