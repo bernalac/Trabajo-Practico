@@ -10,44 +10,45 @@ Qué cosas necesitamos antes de empezar:
 Instalaciones:
 ```
 Sqlite3 
+
+MySql
 ```
 Las librerías necesarias están vinculadas al pom.xml.
 
 ## Creación de base de datos
-En el proyecto quiero recalcar que ya tenemos el archivo **compra.db** asi que si tenemos dicho fichero el paso siguiente **no es necesario hacerlo.**
+Usaremos el script CompraSqlite.java si queremos crear la base de datos sqlite y el CompraMysql para crear la base de datos mysql.
 
 
 **IMPORTANTE**
 
 
-Si no tenemos el archivo por cualquier motivo pueden seguir estas indicaciones:
+En el archivo CompraSqlite.java debemos cambiar la ruta de la url para que coincida con la vuestra.
 
 
-Necesitamos crear base de datos en SQLite. 
+Necesitamos crear base de datos en SQLite con la tabla. 
 
-Este script de java nos serviría para ello.
-Lo creamos y lo llamamos JDBC.java
+que la crearemos compilando y ejecutado con los siguientes comandos
+
+COMPILAR
 ```
-import java.sql.*;
-//esta clase es para crear la tabla. para poder hacerlo, primero hay que poseer un archivo con extension .db
-//en nuestro caso tenemos compra.db
-
-public class JDBC {
-	public static void main(String[] args) {
-		Connection conn = null;
-		try{
-			String url = "jdbc:sqlite:compra.db";
-			String sql = "CREATE TABLE IF NOT EXISTS compra (Cliente TEXT,Producto TEXT,Cantidad Double,Precio DOUBLE,ID INTEGER, Fecha TIMESTAMP);";
-			conn = DriverManager.getConnection(url);
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(sql);
-		}
-		catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-	}
-}
+sudo javac -cp ~/misjars/*:. CompraSqlite.java
 ```
+EJECUTAR
+
+```
+sudo java -cp ~/misjars/*:. CompraSqlite
+```
+PARA MYSQL
+```
+sudo javac -cp ~/misjars/*:. CompraMysql.java
+```
+EJECUTAR
+
+```
+sudo java -cp ~/misjars/*:. CompraMysql
+```
+
+
 Una vez hecho esto, entramos en sqlite con el comando:
 ```
 sqlite3 compra.db
@@ -66,8 +67,38 @@ En estas URLs podemos visualizar la creación para saber más acerca de esto:
 
 * https://www.imaginanet.com/blog/primeros-pasos-con-sqlite3-comandos-basicos.html
 
+Para mysql entraremos con el siguiente comando
+```
+sudo mysql -u root -p
+```
+Compobamos las base de datos con:
+```
+SHOW DATABASES;
+```
+Usamos la bd con:
+```
+USE compra;
+```
+Podemos ver la tabla con:
+```
+SHOW TABLE;
+```
+o con:
+```
+DESCRIBE compra;
+```
+En estas URLs podemos visualizar la creación para saber más acerca de esto:
+
+* http://www.oscarabadfolgueira.com/crear-una-base-datos-mysql-desde-consola/
+
+## Antes de ejecutar
+
+En el fichero Beans.xml habra que elegir que base de datos queremos comentando una u otra.
+También habrá que cambiar la ruta de la base de datos sqlite para que coincida con la vuestra.
+
+
  
-## Ejecución
+## Ejecución del proyecto
 Para ejecutar, nos vamos al raíz del proyecto maven (donde visualizamos el pom.xml y la carpeta src) y ejecutamos los comandos siguientes:
 ```
 $  mvn compile

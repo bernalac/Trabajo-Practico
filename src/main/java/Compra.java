@@ -48,9 +48,9 @@ public class Compra {
     return articulos;
   }
   public void setFecha(Date fecha){
-  	this.fecha = fecha;
+    this.fecha = fecha;
   }
   public Date getFecha() {
-  	return fecha;
+    return fecha;
   }
 }

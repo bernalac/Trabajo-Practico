@@ -3,13 +3,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import javax.sql.DataSource;                                                                           
+import org.springframework.context.ApplicationContext;                                                 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 //aqui esta el codigo para grabar y consultar
 public class JDBCCompra implements DAOCompra{
 	private Connection conectar() {//se hace un metodo para la conexión, para asi no tener que copiar el codigo siempre
-		String url = "jdbc:sqlite:compra.db";
+		ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(url);
+			DataSource ds = (DataSource) context.getBean("ds");                                        
+            conn = ds.getConnection();   
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -17,7 +21,7 @@ public class JDBCCompra implements DAOCompra{
 	}
 
 
-/*
+
 	ArrayList<Integer> listaIDs= new ArrayList<Integer>();
 
 
@@ -38,7 +42,7 @@ public class JDBCCompra implements DAOCompra{
 			System.out.println(o.getMessage());
 		}
 	}
-*/
+
 
 	public void grabar(Compra c) {//codigo para grabar
 		java.sql.Timestamp sqlDate = new java.sql.Timestamp(c.getFecha().getTime());
