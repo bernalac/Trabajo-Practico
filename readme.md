@@ -136,8 +136,12 @@ $  mvn compile
 $  mvn dependency:copy-dependencies package
 $  java -cp target/nombre-archivo.jar:target/dependency/*:. tienda
 ```
-
-
+Para ejecutar el proyecto con JavaFx 
+```
+$  mvn compile
+$  mvn dependency:copy-dependencies package
+$  java -cp target/nombre-archivo.jar:target/dependency/*:. javafx
+```
 
 
 ## Contenido del proyecto:
