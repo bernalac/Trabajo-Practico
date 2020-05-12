@@ -23,101 +23,6 @@ Sobre cómo instalar, os dejamos unos manuales:
 
 
 
-## Creación de base de datos
-Usaremos el script CompraSqlite.java si queremos crear la base de datos sqlite y el CompraMysql para crear la base de datos mysql.
-
-
-Ambos scripts están en la carpeta *crearBDs*
-
-
-**IMPORTANTE**
-
-
-En el archivo CompraSqlite.java debemos cambiar la ruta de la url para que coincida con la vuestra.
-
-
-Para crear las bases de datos con ambos scripts necesitamos los drivers de mysql y sqlite para compilar y ejecutar. Debemos de guardar en una carpeta llamada de la forma qu queramos los archivos .jars, por ejemplo nosotros la llamamos misjars.
-
-
-Podemos encontrar los drivers en estas URLs:
-
- - https://mvnrepository.com/artifact/mysql/mysql-connector-java
- 
- 
- - https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
-
-
-
-**SQLITE**
-
-
-*Compilar*
-```
-$ javac -cp ~/misjars/*:. CompraSqlite.java
-```
-*Ejecutar*
-
-```
-$ java -cp ~/misjars/*:. CompraSqlite
-```
-
-
-
-**MYSQL**
-
-
-*Compilar*
-```
-$ javac -cp ~/misjars/*:. CompraMysql.java
-```
-
-*Ejecutar*
-```
-$ java -cp ~/misjars/*:. CompraMysql
-```
-
-
-Una vez hecho esto, entramos en sqlite con el comando:
-```
-sqlite3 compra.db
-```
-Y visualizamos la tabla con el comando **.tables**.
-
-
-Debe de salir la tabla compra. 
-
-
-
-Una vez ejecutado el programa podemos visualizar los datos que contiene nuestra base de datos de la siguiente forma:
-```
-sqlite3 compra.db
-select * from compra;
-```
-
-
-
-Para mysql entraremos con el siguiente comando
-```
-$ mysql -u root -p
-```
-Compobamos las base de datos con:
-```
-SHOW DATABASES;
-```
-Usamos la bd con:
-```
-USE compra;
-```
-Podemos ver la tabla con:
-```
-SHOW TABLE;
-```
-o con:
-```
-DESCRIBE compra;
-```
-
-
 ## Antes de ejecutar
 *IMPORTANTE*
 
@@ -125,7 +30,6 @@ DESCRIBE compra;
 En el fichero Beans.xml habra que elegir que base de datos queremos comentando una u otra.
 
 
-También habrá que cambiar la ruta de la base de datos sqlite para que coincida con la vuestra.
 
 
  
@@ -144,6 +48,12 @@ $  java -cp target/nombre-archivo.jar:target/dependency/*:. javafx
 ```
 
 
+
+Nos saldrá en ambos casos un mensaje para conectarnos a la base de datos mysql o sqlite.
+
+
+
+
 ## Contenido del proyecto:
 
 tienda.java     --> Es la clase principal, cuyo funcionamiento se explica más adelante.
@@ -159,6 +69,8 @@ DAOCompra.java  --> Interface que se usará para hacer implementaciones de base 
 JDBCCompra.java --> Contiene métodos para conectarse a la bd, para grabar, y para consultar la base de datos.
 
 productos.json  --> Aquí se guarda el catálogo de compras, en formato json.
+
+javafx.java     --> Clase principal con JavaFx.
 
 
 
@@ -187,6 +99,9 @@ Los cambios para la v0.2:
 * Utilización de Spring Framework
 * Añadido reglas de sintaxis en las órdenes condicionales (IgnoreCase) para una mejor interacción con el usuario
 * Maven
+* Implementar scripts de creación de base de datos en DAO.
+* Añadido programa en JavaFx
+
 
 ## Autores:
 * **Robert Marius Puiu** - *Initial work* - *Enlazamiento entre código, mejoras y agregado de código adicional.*
