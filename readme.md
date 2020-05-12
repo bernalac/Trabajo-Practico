@@ -1,4 +1,4 @@
-# Trabajo Final Tienda 
+# Proyecto final: Tienda 
 Este trabajo práctico ha sido realizado para el módulo de programación del primer curso de desarrollo de aplicaciones web.
 
 
