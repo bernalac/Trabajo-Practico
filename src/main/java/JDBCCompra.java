@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.*;
 import javax.sql.DataSource;
@@ -21,6 +23,39 @@ public class JDBCCompra implements DAOCompra{
 	}
 
 
+	public void crearSqlite() {
+		File fichero = new File ("compra.db");
+		try{
+			if(fichero.createNewFile()) {
+				System.out.println("compra.db se ha creado correctamente");
+			}
+			String sql = "CREATE TABLE IF NOT EXISTS compra (Cliente TEXT,Producto TEXT,Cantidad Double,Precio DOUBLE,ID INTEGER, Fecha TIMESTAMP);";
+			Connection conn = this.conectar();
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(sql);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+
+	public void crearMysql() {
+	     try {
+		String bd = "CREATE DATABASE IF NOT EXISTS compra";
+		String use = "USE compra;";
+		String url = "jdbc:mysql://localhost:3306/";
+		String sql = "CREATE TABLE IF NOT EXISTS compra (Cliente VARCHAR(30),Producto VARCHAR(30),Cantidad NUMERIC(4),Precio NUMERIC(4,2),ID NUMERIC(3), Fecha DATE);";
+		Connection conn = DriverManager.getConnection(url, "root", "root");
+		Statement st = conn.createStatement();
+		st.executeUpdate(bd);
+		st.executeUpdate(use);
+		st.executeUpdate(sql);
+	     } catch (Exception e) {
+		System.err.println("OHH ALGO MAL");
+		System.err.println(e.getMessage());
+	     }
+	}
 
 
 

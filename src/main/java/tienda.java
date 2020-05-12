@@ -9,11 +9,23 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.lang.Double;
 import javax.sql.DataSource;
+import java.util.Scanner;
 
 public class tienda{
 	public static void main(String args[]) throws Exception {
 		DAOCompra daocompra = new JDBCCompra();//creacion de DAO para lo relacionado con la base de datos
-		
+		System.out.println("Dime que base de datos vas a usar (sqlite o mysql) ");
+		Scanner sc = new Scanner(System.in);
+		String respuesta1 = sc.nextLine();
+		if (respuesta1.equalsIgnoreCase("sqlite")) {
+			daocompra.crearSqlite();
+		} else if (respuesta1.equalsIgnoreCase("mysql")) {
+			daocompra.crearMysql();
+		} else {
+			System.out.println("No seleccionaste ninguna base de datos existente o algo parecido");
+			System.out.println("Esperamos que la próxima selecciones alguna disponible");
+			return;
+		}
 		//a continuacion, el codigo para leer el fichero json, que corresponde al catalogo de productos.	
 		String line = new String("");
 		String lin = null;

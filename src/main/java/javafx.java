@@ -1,6 +1,6 @@
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
-
+import java.util.Scanner;
 import javafx.application.Application;
 
 import javafx.scene.Group;
@@ -50,6 +50,19 @@ public class javafx extends Application {
 		Compra c = new Compra();
 		Person p = new Person();
 		DAOCompra daocompra = new JDBCCompra();
+		System.out.println("Dime que base de datos vas a usar (sqlite o mysql)");
+                Scanner sc = new Scanner(System.in);
+                String respuesta1 = sc.nextLine();
+                if (respuesta1.equalsIgnoreCase("sqlite")) {
+                        daocompra.crearSqlite();
+                } else if (respuesta1.equalsIgnoreCase("mysql")) {
+                        daocompra.crearMysql();
+                } else {
+                        System.out.println("No seleccionaste ninguna base de datos");
+                        System.out.println("Esperamos que la próxima selecciones una disponible");
+                        return;
+                }
+
 		ArrayList<Compra> lista1 = new ArrayList<Compra>();
 		Double precio = 0.0;
     	//Cartel de bienvenido

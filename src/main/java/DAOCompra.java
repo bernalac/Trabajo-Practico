@@ -3,5 +3,7 @@ public interface DAOCompra {
 	void consultart();
 	void consultarn(String nombre);
 	void consultari(int id);
+	void crearSqlite();
+	void crearMysql();
 }
 //interface para las consultas
