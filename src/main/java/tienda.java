@@ -69,9 +69,9 @@ public class tienda{
 				if(articulo.equals("")){
 					break;
 				}
+
 				for(int i = 0;i<listaProds.size();i++){//aqui esta la informacion del json
 					String[] a = listaProds.get(i).split(":");
-					
 					if(articulo.equals(a[0])){
 						c.getArt().setNombre(articulo);//si el articulo está en la lista de productos disponibles, setteo del articulo
 
@@ -79,6 +79,11 @@ public class tienda{
 						System.out.println("Cantidad: ");//cantidad de articulos
 						String canti = console.readLine();
 						if(canti.equals("")){
+							break;
+						}
+						int number = Integer.parseInt(canti);
+						if (number < 0) {
+							System.out.println("No puedes llevarte menos de 0.0 productos, es incoherente");
 							break;
 						}
 						Double cant = Double.parseDouble(canti);
@@ -97,15 +102,18 @@ public class tienda{
 					c.setArticulos(lista1);
 					break;
 				}
-				else{
+				else if (masart.equalsIgnoreCase("s")){
 					c = new Compra();//si queremos agregar más articulos crea una nueva compra y se le añaden articulos, al no haber creado una persona nueva
 					//se le agrega la ultima persona creada, asi no crea conflictos de persona de compra = null
 					//ni agregar articulos de otras personas.
+				} else if (!masart.equalsIgnoreCase("n")||!masart.equalsIgnoreCase("s")){
+					System.out.println("No me has dado una respuesta convincente");
+					break;
 				}
 			}
 			System.out.println("Mas entradas? S|N ");//Para agregar más entradas (personas y articulos)
 			String masper = console.readLine();
-			if(masper.equalsIgnoreCase("n")){
+			if(!masper.equalsIgnoreCase("s")){
 				break;
 			}
 		}
