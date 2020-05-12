@@ -15,7 +15,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
                                                                                                 
                                                                                                 
  <bean id ="ds" class ="org.sqlite.SQLiteDataSource">                                                 
-          <property name="url" value="jdbc:sqlite:/../../../compra.db"/>          
+          <property name="url" value="jdbc:sqlite:src/main/java/compra.db"/>          
   </bean>
                                                                                               
 </beans>                                                        

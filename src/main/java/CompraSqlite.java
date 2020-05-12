@@ -6,7 +6,7 @@ import java.io.IOException;
 public class CompraSqlite {
     public static void main(String[] args) {
         Connection conn = null;
-        File fichero = new File ("../../../compra.db");
+        File fichero = new File ("compra.db");
         try{
             // A partir del objeto File creamos el fichero físicamente
             if (fichero.createNewFile()) {
@@ -15,7 +15,7 @@ public class CompraSqlite {
             else {
                 System.out.println("No ha podido ser creado compra.db");
             }
-            String url = "jdbc:sqlite:/media/samuel/PHILIPS UFD/1DAW/PROGRAMACION/cdaw1/samuelr/tercera/proyectos/proy3/Trabajo-Practico/compra.db";            
+            String url = "jdbc:sqlite:compra.db";            
             String sql = "CREATE TABLE IF NOT EXISTS compra (Cliente TEXT,Producto TEXT,Cantidad Double,Precio DOUBLE,ID INTEGER, Fecha TIMESTAMP);";
             conn = DriverManager.getConnection(url);
             Statement statement = conn.createStatement();

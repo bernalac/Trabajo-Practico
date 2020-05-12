@@ -68,7 +68,7 @@ public class javafx extends Application {
                      "-fx-min-height: 3px; " +
                      "-fx-max-width: 1000px; " +
                      "-fx-max-height: 1000px;" +
-                     "-fx-background-color: lightblue;");
+                     "-fx-background-color: #B6E01F;");
         //boton para comprar
         Button comprar=new Button("Comprar");
         comprar.setStyle("-fx-background-radius: 5em; " +
@@ -76,7 +76,7 @@ public class javafx extends Application {
                          "-fx-min-height: 100px; " +
                          "-fx-max-width: 200px; " +
                          "-fx-max-height: 200px;" +
-                         "-fx-background-color: #98ff61;"+
+                         "-fx-background-color: #EAED16;"+
                          "-fx-font-family: Impact;"+
                          "-fx-font-size: 18px;"+
                          "-fx-border-color:black;"+
@@ -86,7 +86,7 @@ public class javafx extends Application {
         comprar.setLayoutY(200);
         //boton para consultar
         Button consultar=new Button("Consultar");
-        consultar.setStyle("-fx-background-radius: 6em; " +
+        consultar.setStyle("-fx-background-radius: 5em; " +
                            "-fx-min-width: 100px; " +
                            "-fx-min-height: 100px; " +
                            "-fx-max-width: 200px; " +
@@ -95,7 +95,7 @@ public class javafx extends Application {
                            "-fx-font-family: Impact;"+
                            "-fx-font-size: 18px;"+
                            "-fx-border-color:black;"+
-                           "-fx-border-radius:6em;");
+                           "-fx-border-radius:5em;");
         consultar.setLayoutX(200);
         consultar.setLayoutY(800);
         //boton para salir
