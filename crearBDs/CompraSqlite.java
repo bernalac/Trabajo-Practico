@@ -17,7 +17,8 @@ public class CompraSqlite {
 	    //Modificar ruta de database, String url cambiar por la vuestra
 	    // IMPORTANTE!!!!!!!!!!
 	    //Debe ser la ruta donde se encuentre el archivo -compra.db-
-            String url = "jdbc:sqlite:/home/user/carpetas/compra.db";
+	      String url = "jdbc:sqlite:/home/javier/V1/Trabajo-Practico/compra.db";
+//            String url = "jdbc:sqlite:/home/user/carpetas/compra.db";
             String sql = "CREATE TABLE IF NOT EXISTS compra (Cliente TEXT,Producto TEXT,Cantidad Double,Precio DOUBLE,ID INTEGER, Fecha TIMESTAMP);";
             conn = DriverManager.getConnection(url);
             Statement statement = conn.createStatement();

@@ -22,26 +22,6 @@ public class JDBCCompra implements DAOCompra{
 
 
 
-	ArrayList<Integer> listaIDs= new ArrayList<Integer>();
-
-
-
-	public void idexistente(int ids){
-		try  {
-			String sql1 = "SELECT ID FROM compra";
-			Connection conn = this.conectar();
-			PreparedStatement pstmt = conn.prepareStatement(sql1);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				listaIDs.add(rs.getInt("ID"));
-			}
-			if(listaIDs.contains(ids)){
-				System.out.println("Esta ID ya existe.");
-			}
-		} catch (SQLException o) {
-			System.out.println(o.getMessage());
-		}
-	}
 
 
 	public void grabar(Compra c) {//codigo para grabar

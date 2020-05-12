@@ -13,8 +13,6 @@ import javax.sql.DataSource;
 public class tienda{
 	public static void main(String args[]) throws Exception {
 		DAOCompra daocompra = new JDBCCompra();//creacion de DAO para lo relacionado con la base de datos
-//		@AutoWired
-//		DataSource ds;
 		
 		//a continuacion, el codigo para leer el fichero json, que corresponde al catalogo de productos.	
 		String line = new String("");
