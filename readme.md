@@ -59,8 +59,7 @@ $  java -cp target/nombre-archivo.jar:target/dependency/*:. javafx
 
 
 
-Nos saldrá en ambos casos un mensaje para conectarnos a la base de datos mysql o sqlite.
-
+Nos saldrá en ambos casos un mensaje para conectarnos a la base de datos mysql o sqlite y otro mensaje para elegir entre frutería o informática.
 
 
 
@@ -100,7 +99,7 @@ Los cambios para la v0.2:
 
 
 
-## Cambios en progreso fecha 2020 *In Progress*:
+## Cambios en progreso fecha 2020 :
 * Parametrización de datos de bases de datos en fichero Beans.xml, carpeta Resources
 * Arreglar fallos de orden de comandos, concretamente en el archivo JDBCCompra.java, donde los ResultSet de dos métodos no estaban correctos
 * Utilización de más de una base de datos
@@ -117,7 +116,7 @@ Los cambios para la v0.2:
 ## Autores:
 * **Robert Marius Puiu** - *Initial work* - *Enlazamiento entre código, mejoras y agregado de código adicional.*
 * **Guillermo Pérez Aragón** - *Initial work* - *Aportación de clases, DAOs, fechas y mejoras de código*
-* **Francisco Javier Bernal Ramírez** - *In progress* 
-* **Samuel Rivera Peñalosa** - *In progress* 
+* **Francisco Javier Bernal Ramírez** 
+* **Samuel Rivera Peñalosa** 
 
 &copy;
