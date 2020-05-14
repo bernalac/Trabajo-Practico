@@ -97,12 +97,12 @@ public class JDBCCompra implements DAOCompra{
 			Connection conn = this.conectar();
 			PreparedStatement pstmt = conn.prepareStatement(sql2);
 			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {	
+					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "Cliente: "+rs.getString("Cliente") + ANSI_RESET);
 			
-			while (rs.next()) {
-				 System.out.println("Cliente: "+rs.getString("Cliente"));	
-				 System.out.println(rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, con ID " + rs.getInt("ID") + " a fecha de " + rs.getTimestamp("Fecha"));
-
-			 }	
+					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + rs.getDouble("Cantidad")+" unidades de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, con ID " + rs.getInt("ID") + " a fecha de " + rs.getTimestamp("Fecha") + ANSI_RESET);
+				 }	
+			
 		}
 		catch (SQLException o) {
 			System.out.println(o.getMessage());
@@ -116,21 +116,11 @@ public class JDBCCompra implements DAOCompra{
 			Connection conn = this.conectar();
 			PreparedStatement pstmt = conn.prepareStatement(sql2);
 			ResultSet rs = pstmt.executeQuery();
-			
-			if (tienda.seccion.equalsIgnoreCase("Fruteria")){
-				while (rs.next()) {	
-					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "ID: " + rs.getInt("ID") + ANSI_RESET);
-					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "Esta ID le pertenece a: " + rs.getString("Cliente") + ANSI_RESET);
-					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, a fecha de " + rs.getTimestamp("Fecha") + ANSI_RESET);
-				 }	
-			}
-			else if (tienda.seccion.equalsIgnoreCase("Informatica")){
-				while (rs.next()) {	
+			while (rs.next()) {	
 					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "ID: " + rs.getInt("ID") + ANSI_RESET);
 					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "Esta ID le pertenece a: " + rs.getString("Cliente") + ANSI_RESET);
 					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + rs.getDouble("Cantidad")+" unidades de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, a fecha de " + rs.getTimestamp("Fecha") + ANSI_RESET);
 				 }	
-			}
 		}
 		catch (SQLException o) {
 			System.out.println(o.getMessage());
