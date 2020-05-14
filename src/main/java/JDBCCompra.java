@@ -57,6 +57,20 @@ public class JDBCCompra implements DAOCompra{
 	     }
 	}
 
+	  public static final String ANSI_RESET = "\u001B[0m";
+	  //Colores de letra
+	  public static final String ANSI_BLACK = "\u001B[30m";
+	  public static final String ANSI_RED = "\u001B[31m";
+	  public static final String ANSI_GREEN = "\u001B[32m";
+	  public static final String ANSI_YELLOW = "\u001B[33m";
+	  public static final String ANSI_BLUE = "\u001B[34m";
+	  public static final String ANSI_PURPLE = "\u001B[35m";
+	  public static final String ANSI_CYAN = "\u001B[36m";
+	  public static final String ANSI_WHITE = "\u001B[37m";
+	  //Colores de fondo
+	  public static final String ANSI_BLACK_BACKGROUND = "\u001B[30m";
+
+
 
 
 	public void grabar(Compra c) {//codigo para grabar
@@ -99,10 +113,9 @@ public class JDBCCompra implements DAOCompra{
 			PreparedStatement pstmt = conn.prepareStatement(sql2);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {	
-				System.out.println("Cliente: "+rs.getString("Cliente"));
-
-				System.out.println(rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, con ID " + rs.getInt("ID") + " a fecha de " + rs.getTimestamp("Fecha"));
-
+					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "Cliente: "+rs.getString("Cliente") + ANSI_RESET);
+			
+					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + rs.getDouble("Cantidad")+" unidades de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, con ID " + rs.getInt("ID") + " a fecha de " + rs.getTimestamp("Fecha") + ANSI_RESET);
 			 }	
 		}
 		catch (SQLException o) {
@@ -118,9 +131,9 @@ public class JDBCCompra implements DAOCompra{
 			PreparedStatement pstmt = conn.prepareStatement(sql2);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {	
-				System.out.println("ID: " + rs.getInt("ID"));
-				System.out.println("Esta ID le pertenece a: " + rs.getString("Cliente"));
-				System.out.println(rs.getDouble("Cantidad")+" Kg. de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, a fecha de " + rs.getTimestamp("Fecha"));
+					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "ID: " + rs.getInt("ID") + ANSI_RESET);
+					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "Esta ID le pertenece a: " + rs.getString("Cliente") + ANSI_RESET);
+					 System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + rs.getDouble("Cantidad")+" unidades de "+rs.getString("Producto")+" por "+rs.getDouble("Precio") + " €, a fecha de " + rs.getTimestamp("Fecha") + ANSI_RESET);
 
 			 }	
 		}
