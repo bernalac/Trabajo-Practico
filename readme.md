@@ -22,6 +22,8 @@ Instalaciones:
 Sqlite3 
 
 MySql
+
+JavaFx (Opcional)
 ```
 Sobre cómo instalar, os dejamos unos manuales:
 
