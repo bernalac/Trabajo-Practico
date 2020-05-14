@@ -83,9 +83,9 @@ public class tienda{
 			System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "ID de compra: " + ANSI_RESET);
 			String idcomp = console.readLine();
 			int idcom=Integer.parseInt(idcomp);
-			daocompra.idexistente(idcom);
-			daocompra.consultart();
-	
+			if (daocompra.idexistente(idcom)) {
+				break;
+			}
 			
 			while(true){//este while es para que una persona pueda comprar mas de un articulo en una compra
 				c.setId(idcom);//setteo del id

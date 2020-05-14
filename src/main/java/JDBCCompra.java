@@ -37,9 +37,10 @@ public class JDBCCompra implements DAOCompra{
 	  public static final String ANSI_BLACK_BACKGROUND = "\u001B[30m";
 	  
 	ArrayList<Integer> listaIDs= new ArrayList<Integer>();
-
-	public void idexistente(int ids){
+	boolean valor;
+	public boolean idexistente(int ids){
 		try  {
+
 			String sql1 = "SELECT ID FROM compra";
 			Connection conn = this.conectar();
 			PreparedStatement pstmt = conn.prepareStatement(sql1);
@@ -48,14 +49,19 @@ public class JDBCCompra implements DAOCompra{
 
 				listaIDs.add(rs.getInt("ID"));
 				if(listaIDs.contains(ids)){
-					System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "Esta ID ya existe, introduce uno que no este en la lista" + ANSI_RESET);
-					break;
+					System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "Esta ID ya existe" + ANSI_RESET);
+					valor = true;
 				}
+				else {
+					valor = false;
+				}
+				
 			}
 			
 		} catch (SQLException o) {
 			System.out.println(o.getMessage());
 		}
+		return valor;
 	}
 
 
@@ -67,7 +73,9 @@ public class JDBCCompra implements DAOCompra{
 			pstmt.setString(2, c.getArt().getNombre());
 			pstmt.setDouble(3, c.getCant());
 			pstmt.setDouble(4, c.getArt().getPrecio());
-			pstmt.setInt(5, c.getId());
+			
+				pstmt.setInt(5, c.getId());
+			
 			pstmt.setTimestamp(6, sqlDate);
 			pstmt.executeUpdate();
 		} catch (SQLException o) {
