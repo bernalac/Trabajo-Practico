@@ -1,5 +1,5 @@
 [{
-  "nombre":"Ram","precio": "80"
+  "nombre":"RAM","precio": "80"
  },
  {
   "nombre":"SSD","precio": "50"
@@ -8,12 +8,12 @@
   "nombre":"GRAFICA","precio": "300"
  },
  {
-  "nombre":"REFRIGERACION","precio": "150"
+  "nombre":"REFRIG","precio": "150"
  },
  {
-  "nombre":"PLACA BASE","precio": "200"
+  "nombre":"PLACA","precio": "200"
  },
  {
-  "nombre":"FUENTE ALIMENTA","precio": "100"
+  "nombre":"FUENTE","precio": "100"
  },
 ]

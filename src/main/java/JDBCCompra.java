@@ -59,19 +59,34 @@ public class JDBCCompra implements DAOCompra{
 
 	  public static final String ANSI_RESET = "\u001B[0m";
 	  //Colores de letra
-	  public static final String ANSI_BLACK = "\u001B[30m";
 	  public static final String ANSI_RED = "\u001B[31m";
 	  public static final String ANSI_GREEN = "\u001B[32m";
-	  public static final String ANSI_YELLOW = "\u001B[33m";
-	  public static final String ANSI_BLUE = "\u001B[34m";
-	  public static final String ANSI_PURPLE = "\u001B[35m";
-	  public static final String ANSI_CYAN = "\u001B[36m";
-	  public static final String ANSI_WHITE = "\u001B[37m";
 	  //Colores de fondo
 	  public static final String ANSI_BLACK_BACKGROUND = "\u001B[30m";
 
-
-
+	ArrayList<Integer> listaIDs= new ArrayList<Integer>();
+	boolean valor;
+	public boolean idexistente(int ids){
+		try  {
+			String sql1 = "SELECT ID FROM compra";
+			Connection conn = this.conectar();
+			PreparedStatement pstmt = conn.prepareStatement(sql1);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				listaIDs.add(rs.getInt("ID"));
+				if(listaIDs.contains(ids)){
+					System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "Esta ID ya existe" + ANSI_RESET);
+					valor = true;
+				}
+				else {
+					valor = false;
+				}
+			}	
+		} catch (SQLException o) {
+			System.out.println(o.getMessage());
+		}
+		return valor;
+	}
 
 	public void grabar(Compra c) {//codigo para grabar
 		java.sql.Timestamp sqlDate = new java.sql.Timestamp(c.getFecha().getTime());

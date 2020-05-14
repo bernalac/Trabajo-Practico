@@ -45,6 +45,14 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 public class javafx extends Application {
+    //Reset
+      public static final String ANSI_RESET = "\u001B[0m";
+      //Colores de letra
+      public static final String ANSI_RED = "\u001B[31m";
+      public static final String ANSI_GREEN = "\u001B[32m";
+      public static final String ANSI_CYAN = "\u001B[36m";
+      //Colores de fondo
+      public static final String ANSI_BLACK_BACKGROUND = "\u001B[30m";
     @Override
     public void start(Stage primaryStage) throws Exception {
         Compra c = new Compra();
@@ -409,12 +417,12 @@ public class javafx extends Application {
                                                         c.setFecha(fechaFactura);
                                                         c.getPer().setName(p.getName());
                                                         System.out.println("");                         
-                                                        System.out.println(" ***Ticket de la compra***");
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + " ***Ticket de la compra***" + ANSI_RESET);
                                                         System.out.println("");
-                                                        System.out.println("Nombre: "+p.getName() + "    ID compra: " + c.getId() + "  Fecha:  " +c.getFecha());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Nombre: "+p.getName() + "    ID compra: " + c.getId() + "  Fecha:  " +c.getFecha() +ANSI_RESET);
                                                         System.out.println("");
                                                         System.out.println("PRODUCTO    CANTIDAD    PRECIO");
-                                                        System.out.println("-------------------------------------");
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "-------------------------------------" + ANSI_RESET);
                                                         
                                                     }
                                                     if (naranjasSpinner.getValue()>0){
@@ -422,7 +430,7 @@ public class javafx extends Application {
                                                         Double precio1 = 1.3;
                                                         c.getArt().setPrecio(precio1 * naranjasSpinner.getValue());
                                                         c.getArt().setNombre("Naranjas");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio() + ANSI_RESET);
                                                         naranjasSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -434,7 +442,7 @@ public class javafx extends Application {
                                                         Double precio2 = 3.7;
                                                         c.getArt().setPrecio(precio2 * manzanasSpinner.getValue());
                                                         c.getArt().setNombre("Manzanas");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio() + ANSI_RESET);
                                                         manzanasSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -445,7 +453,7 @@ public class javafx extends Application {
                                                         Double precio3 = 7.2;
                                                         c.getArt().setPrecio(precio3 * mangosSpinner.getValue());
                                                         c.getArt().setNombre("Mangos");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN +c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio() + ANSI_RESET);
                                                         mangosSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -456,7 +464,7 @@ public class javafx extends Application {
                                                         Double precio4 = 11.2;
                                                         c.getArt().setPrecio(precio4 * sandiasSpinner.getValue());
                                                         c.getArt().setNombre("Sandias");
-														System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio());                                                        sandiasSpinner.getValueFactory().setValue(0.0);
+														System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio() + ANSI_RESET);                                                        sandiasSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
                                                         daocompra.grabar(c);
@@ -466,7 +474,7 @@ public class javafx extends Application {
                                                         Double precio5 = 1.5;
                                                         c.getArt().setPrecio(precio5 * fresasSpinner.getValue());
                                                         c.getArt().setNombre("Fresas");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio() + ANSI_RESET);
                                                         fresasSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -477,14 +485,14 @@ public class javafx extends Application {
                                                         Double precio6 = 1.7;
                                                         c.getArt().setPrecio(precio6 * perasSpinner.getValue());
                                                         c.getArt().setNombre("Peras");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    kg. "   + c.getArt().getPrecio() + ANSI_RESET);
                                                         perasSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
                                                         daocompra.grabar(c);
                                                     }
-                                                        System.out.println("----------------------------------------");
-                                                        System.out.println("Total:               " +  preciototal);
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN +"----------------------------------------"+ ANSI_RESET);
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN +"Total:               " +  preciototal + ANSI_RESET);
                                                         //for (Compra abc : lista1){
                                                             //System.out.println(abc.getPer().getName());                           
                                                         //}
@@ -503,7 +511,7 @@ public class javafx extends Application {
                                         });
                                     }
                                     catch(Exception ex) {
-                                         System.out.println("Error, no se encuentra la imagen.");
+                                         System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED +"Error, no se encuentra la imagen." + ANSI_RESET);
                                     }
                                 }
                             });
@@ -613,7 +621,7 @@ public class javafx extends Application {
                                                         //Aqui a traves de una interface se comprueba lo escrito en el textfield
                                                         //con la base de datos e imprime la informacion en la terminal
                                                         if(introid2.getText().isEmpty()){
-                                                            System.out.println("No ha escrito ningun ID"+"\n");
+                                                            System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "No ha escrito ningun ID" + ANSI_RESET + "\n");
                                                         }else{
                                                             daocompra.consultari(Integer.parseInt(introid2.getText()));
 
@@ -677,7 +685,7 @@ public class javafx extends Application {
                                                         //Aqui a traves de una interface se comprueba lo escrito en el textfield
                                                         //con la base de datos e imprime la informacion en la terminal
                                                         if(intron2.getText().isEmpty()){
-                                                            System.out.println("No ha escrito ningun nombre"+"\n");
+                                                            System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED +"No ha escrito ningun nombre"+ ANSI_RESET + "\n");
                                                         }else{
                                                             daocompra.consultarn(intron2.getText());
                                                         }
@@ -704,7 +712,7 @@ public class javafx extends Application {
                                         //
                                        salir.setOnAction(new EventHandler<ActionEvent>(){
                                                         @Override public void handle(ActionEvent e){
-                                                            System.out.println("Vuelva pronto.");
+                                                            System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Vuelva pronto." + ANSI_RESET);
                                                             primaryStage.close();
                                                         }
                                                     });
@@ -989,12 +997,12 @@ public class javafx extends Application {
                                                         c.setFecha(fechaFactura);
                                                         c.getPer().setName(p.getName());
                                                         System.out.println("");                         
-                                                        System.out.println(" ***Ticket de la compra***");
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + " ***Ticket de la compra***" + ANSI_RESET);
                                                         System.out.println("");
-                                                        System.out.println("Nombre: "+p.getName() + "    ID compra: " + c.getId() + "  Fecha:  " +c.getFecha());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Nombre: "+p.getName() + "    ID compra: " + c.getId() + "  Fecha:  " +c.getFecha() + ANSI_RESET);
                                                         System.out.println("");
-                                                        System.out.println("PRODUCTO    CANTIDAD    PRECIO");
-                                                        System.out.println("-------------------------------------");
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "PRODUCTO    CANTIDAD    PRECIO" + ANSI_RESET);
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "-------------------------------------" + ANSI_RESET);
                                                         
                                                     }
                                                     if (fuenteSpinner.getValue()>0){
@@ -1002,7 +1010,7 @@ public class javafx extends Application {
                                                         Double precio1 = 70.0;
                                                         c.getArt().setPrecio(precio1 * fuenteSpinner.getValue());
                                                         c.getArt().setNombre("Fuente");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio() + ANSI_RESET);
                                                         fuenteSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -1014,7 +1022,7 @@ public class javafx extends Application {
                                                         Double precio2 = 50.0;
                                                         c.getArt().setPrecio(precio2 * ssdSpinner.getValue());
                                                         c.getArt().setNombre("SSD");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio() + ANSI_RESET);
                                                         ssdSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -1025,7 +1033,7 @@ public class javafx extends Application {
                                                         Double precio3 = 120.0;
                                                         c.getArt().setPrecio(precio3 * graficaSpinner.getValue());
                                                         c.getArt().setNombre("Grafica");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio() + ANSI_RESET);
                                                         graficaSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -1036,7 +1044,7 @@ public class javafx extends Application {
                                                         Double precio4 = 100.0;
                                                         c.getArt().setPrecio(precio4 * refrigeracionSpinner.getValue());
                                                         c.getArt().setNombre("Refrigeracion");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio() + ANSI_RESET);
                                                         refrigeracionSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -1047,7 +1055,7 @@ public class javafx extends Application {
                                                         Double precio5 = 200.0;
                                                         c.getArt().setPrecio(precio5 * placabaseSpinner.getValue());
                                                         c.getArt().setNombre("Placa base");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio() + ANSI_RESET);
                                                         placabaseSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
@@ -1058,14 +1066,14 @@ public class javafx extends Application {
                                                         Double precio6 = 80.0;
                                                         c.getArt().setPrecio(precio6 * ramSpinner.getValue());
                                                         c.getArt().setNombre("Ram");
-                                                        System.out.println(c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio());
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + c.getArt().getNombre()+"    " + c.getCant() + "    " + c.getArt().getPrecio() + ANSI_RESET);
                                                         ramSpinner.getValueFactory().setValue(0.0);
                                                         preciototal=preciototal + c.getArt().getPrecio();
                                                         lista1.add(c);
                                                         daocompra.grabar(c);
                                                     }
-                                                        System.out.println("----------------------------------------");
-                                                        System.out.println("Total:               " +  preciototal);
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN +"----------------------------------------" + ANSI_RESET);
+                                                        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Total:               " +  preciototal+ ANSI_RESET);
                                                         //for (Compra abc : lista1){
                                                             //System.out.println(abc.getPer().getName());                           
                                                         //}
@@ -1084,7 +1092,7 @@ public class javafx extends Application {
                                         });
                                     }
                                     catch(Exception ex) {
-                                         System.out.println("Error, no se encuentra la imagen.");
+                                         System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "Error, no se encuentra la imagen." + ANSI_RESET);
                                     }
                                 }
                             });
@@ -1194,7 +1202,7 @@ public class javafx extends Application {
                                                         //Aqui a traves de una interface se comprueba lo escrito en el textfield
                                                         //con la base de datos e imprime la informacion en la terminal
                                                         if(introid2.getText().isEmpty()){
-                                                            System.out.println("No ha escrito ningun ID"+"\n");
+                                                            System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "No ha escrito ningun ID" + ANSI_RESET + "\n");
                                                         }else{
                                                             daocompra.consultari(Integer.parseInt(introid2.getText()));
 
@@ -1258,7 +1266,7 @@ public class javafx extends Application {
                                                         //Aqui a traves de una interface se comprueba lo escrito en el textfield
                                                         //con la base de datos e imprime la informacion en la terminal
                                                         if(intron2.getText().isEmpty()){
-                                                            System.out.println("No ha escrito ningun nombre"+"\n");
+                                                            System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "No ha escrito ningun nombre" + ANSI_RESET + "\n");
                                                         }else{
                                                             daocompra.consultarn(intron2.getText());
                                                         }
@@ -1285,7 +1293,7 @@ public class javafx extends Application {
                                         //
                                        salir.setOnAction(new EventHandler<ActionEvent>(){
                                                         @Override public void handle(ActionEvent e){
-                                                            System.out.println("Vuelva pronto.");
+                                                            System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN +"Vuelva pronto." + ANSI_RESET);
                                                             primaryStage.close();
                                                         }
                                                     });

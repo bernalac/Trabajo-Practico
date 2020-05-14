@@ -15,21 +15,16 @@ public class tienda{
 	  //Reset
 	  public static final String ANSI_RESET = "\u001B[0m";
 	  //Colores de letra
-	  public static final String ANSI_BLACK = "\u001B[30m";
 	  public static final String ANSI_RED = "\u001B[31m";
 	  public static final String ANSI_GREEN = "\u001B[32m";
-	  public static final String ANSI_YELLOW = "\u001B[33m";
-	  public static final String ANSI_BLUE = "\u001B[34m";
-	  public static final String ANSI_PURPLE = "\u001B[35m";
 	  public static final String ANSI_CYAN = "\u001B[36m";
-	  public static final String ANSI_WHITE = "\u001B[37m";
 	  //Colores de fondo
 	  public static final String ANSI_BLACK_BACKGROUND = "\u001B[30m";
 	  public static String seccion = null;
 
 	public static void main(String args[]) throws Exception {
 		DAOCompra daocompra = new JDBCCompra();//creacion de DAO para lo relacionado con la base de datos
-		System.out.println("Dime que base de datos vas a usar (sqlite o mysql) ");
+		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Dime que base de datos vas a usar (sqlite o mysql) " + ANSI_RESET);
 		Scanner sc = new Scanner(System.in);
 		String respuesta1 = sc.nextLine();
 		if (respuesta1.equalsIgnoreCase("sqlite")) {
@@ -37,13 +32,13 @@ public class tienda{
 		} else if (respuesta1.equalsIgnoreCase("mysql")) {
 			daocompra.crearMysql();
 		} else {
-			System.out.println("No seleccionaste ninguna base de datos existente o algo parecido");
-			System.out.println("Esperamos que la próxima selecciones alguna disponible");
+			System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "No seleccionaste ninguna base de datos existente o algo parecido" + ANSI_RESET);
+			System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "Esperamos que la próxima selecciones alguna disponible" + ANSI_RESET);
 			return;
 		}
 		//a continuacion, el codigo para leer el fichero json, que corresponde al catalogo de productos.	
 
-String line = new String("");
+		String line = new String("");
 		String lin = null;
 		String line1 = new String("");
 		String lin1 = null;
@@ -51,7 +46,8 @@ String line = new String("");
 		ArrayList<String> listaProdsI = new ArrayList<String>();
 		Console sec = null;
 		sec = System.console();
-		System.out.println("Elige una seccion: Fruteria | Informática");
+		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Bienvenidos a nuestra tienda!!!" + ANSI_RESET);
+		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Elige una seccion: Fruteria | Informática" + ANSI_RESET);
 		seccion = sec.readLine();
 		if (seccion.equalsIgnoreCase("Fruteria")){
 			BufferedReader br = new BufferedReader(new FileReader("productos.json"));
@@ -59,13 +55,17 @@ String line = new String("");
 	          	line = line + lin;
 	        }
 	        JSONArray jsonProductos = new JSONArray(line);
-	        
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Sección Frutería" + ANSI_RESET);
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "------------------" + ANSI_RESET);
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Producto " + " Precio" + ANSI_RESET);
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "               " + ANSI_RESET);
 	        for (Object obj : jsonProductos){
 	        		String nombre = ((JSONObject) obj).getString("nombre");
 	        		String precio = ((JSONObject) obj).getString("precio");
 	        		listaProds.add(nombre + ":" + precio);//los datos se pasan a una lista,para tenerlos guardados y poder usarlos
-	        		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + nombre + ": " + precio + " €" + ANSI_RESET);
+	        		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + nombre + " : " + precio + " €" + ANSI_RESET);
 	        }
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "-------------------" + ANSI_RESET);  		
 		}
 		else if (seccion.equalsIgnoreCase("Informatica")) {
 			
@@ -74,13 +74,19 @@ String line = new String("");
 	          	line1 = line1 + lin1;
 	        }
 	        JSONArray jsonProductosI = new JSONArray(line1);
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Sección Informática" + ANSI_RESET);
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "---------------------------" + ANSI_RESET);
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "Producto " + " Precio" + ANSI_RESET);
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "                           " + ANSI_RESET);
 	        for (Object obj1 : jsonProductosI){
 	        		String nombre = ((JSONObject) obj1).getString("nombre");
 	        		String precio = ((JSONObject) obj1).getString("precio");
 	        		listaProdsI.add(nombre + ":" + precio);//los datos se pasan a una lista,para tenerlos guardados y poder usarlos
-	        		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + nombre + ": " + precio + " €" + ANSI_RESET);		
-        	}
-		}
+	        		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + nombre + ":  " + precio + " €" + ANSI_RESET);
+	        }
+	        System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "---------------------------" + ANSI_RESET);				
+        }
+		
         //una vez leidos y guardados, se empieza con la compra
 		Compra c;
 		ArrayList<Compra> lista1 = new ArrayList<Compra>();
@@ -98,6 +104,9 @@ String line = new String("");
 			System.out.println(ANSI_BLACK_BACKGROUND + ANSI_CYAN + "ID de compra: " + ANSI_RESET);
 			String idcomp = console.readLine();
 			int idcom=Integer.parseInt(idcomp);
+			if (daocompra.idexistente(idcom)) {
+				break;
+			}
 			
 			while(true){//este while es para que una persona pueda comprar mas de un articulo en una compra
 				c.setId(idcom);//setteo del id
@@ -120,7 +129,7 @@ String line = new String("");
 						}
 						int number = Integer.parseInt(canti);
 						if (number < 0) {
-							System.out.println("No puedes llevarte menos de 0.0 productos, es incoherente");
+							System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "No puedes llevarte menos de 0.0 productos, es incoherente" + ANSI_RESET);
 							break;
 						}
 						Double cant = Double.parseDouble(canti);
@@ -177,7 +186,7 @@ String line = new String("");
 			}
 		}
 		//Confirmación de registro en la base de datos, con la fecha de la factura.
-		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "Los datos han quedado guardados en la base de datos. A fecha de "+ new SimpleDateFormat("dd-MM-yyyy hh:mm:ss").format(c.getFecha()) + ANSI_RESET);
+		System.out.println(ANSI_BLACK_BACKGROUND + ANSI_GREEN + "Los datos han quedado guardados en la base de datos. A fecha de " + new SimpleDateFormat("dd-MM-yyyy hh:mm:ss").format(c.getFecha()) + ANSI_RESET);
 		//Se le cambia el formato de la fecha de Compra para que la muestre como nosotros la visualizamos dia-mes-año y hora:min:seg
 
 		while(true){//aqui es donde esta la parte de consultas.
@@ -199,7 +208,7 @@ String line = new String("");
 					int r2=Integer.parseInt(r);
 					daocompra.consultari(r2);//te muestra la compra de una persona
 				}
-				else{//si la opcion que se introdujo no es n, p, i que salte este error y que pregunte si desea consultar o no.
+				else{//si la opcion que se introdujo no es n, i que salte este error y que pregunte si desea consultar o no.
 					System.out.println(ANSI_BLACK_BACKGROUND + ANSI_RED + "Lo sentimos! Esa opcion no esta disponible" + ANSI_RESET);
 				}
 			}

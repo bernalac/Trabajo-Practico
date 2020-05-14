@@ -5,5 +5,6 @@ public interface DAOCompra {
 	void consultari(int id);
 	void crearSqlite();
 	void crearMysql();
+	boolean idexistente(int ids);
 }
 //interface para las consultas
