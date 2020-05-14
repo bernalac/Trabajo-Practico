@@ -4,6 +4,16 @@ Este trabajo práctico ha sido realizado para el módulo de programación del pr
 
 Es un proyecto maven.
 
+
+## Utilidad:
+Este programa tiene el fin de guardar una lista de compras o factura de compras.  
+Al ejecutar mostrará una serie de productos disponibles, de los cuales el cliente deberá elegir el deseado y la cantidad que desee. 
+
+Una vez elegidos todos los productos, se mostrará el precio total por producto.  
+Seguidamente nos dará la opción de visualizar la factura a través de una base de datos, donde se almacenan los datos de las facturas (persona, producto, cantidad, precio e ID).
+
+
+
 ## Requisitos:
 Qué necesitamos antes de empezar:
 
@@ -74,24 +84,22 @@ javafx.java     --> Clase principal con JavaFx.
 
 
 
-## Fin:
-Este programa tiene el fin de guardar una lista de compras o factura de compras.  
-Al ejecutar mostrará una serie de productos disponibles, de los cuales el cliente deberá elegir el deseado y la cantidad que desee. 
 
-Una vez elegidos todos los productos, se mostrará el precio total por producto.  
-Seguidamente nos dará la opción de visualizar la factura a través de una base de datos, donde se almacenan los datos de las facturas (persona, producto, cantidad, precio e ID).
 
 ## ¿Cómo funciona?
 En un principio, el programa tienda.java coge informacion del fichero json, para asi poseer un catalogo de productos permitidos, que contienen nombre y precio. Una vez obtenido el catalogo, el programa hace una nueva compra(ahi es donde entran las clases Articulo,Compra, y Person), y empieza a pedir datos por teclado, para definir dicha compra(nombre de la persona, que articulo se quiere comprar, etc..).  
 
 El programa es capaz de que una persona, pueda tener uno o mas articulos, y tambien puede tener una o mas compras(que estan distribuidos por ID) por lo que, se pueden repetir nombres en las personas.Cada vez que se hace una entrada, al finalizar, el programa guarda la informacion en la base de datos del fichero compra.db(aqui es donde se empieza a usar El fichero DAOCompra, y su implementación). 
 
-Una vez que ya se acaban con las entradas, existe la posibilidad de consultar los datos. Al ir por ese camino, se muestra un listado completo, mostrando todos los datos que hay guardados en la base de datos, y despues de eso, te ofrece 3 posibilidades: Consultar por nombre, Consultar por producto, y consultar por ID de compra. Finalmente, cuando ya no se quiere consultar mas, finaliza el programa.
+Una vez que ya se acaban con las entradas, existe la posibilidad de consultar los datos. Al ir por ese camino, se muestra un listado completo, mostrando todos los datos que hay guardados en la base de datos, y despues de eso, te ofrece 2 posibilidades: Consultar por nombre y consultar por ID de compra. Finalmente, cuando ya no se quiere consultar mas, finaliza el programa.
 
 ## Cambios anteriores redactados:
 Los cambios para la v0.2: 
 - Se le ha añadido fecha y hora a la factura de la compra, tanto a la clase Compra como a la compra guardada en la base de datos compra.db
 - Pequeñas mejoras de código.
+
+
+
 ## Cambios en progreso fecha 2020 *In Progress*:
 * Parametrización de datos de bases de datos en fichero Beans.xml, carpeta Resources
 * Arreglar fallos de orden de comandos, concretamente en el archivo JDBCCompra.java, donde los ResultSet de dos métodos no estaban correctos
@@ -101,6 +109,9 @@ Los cambios para la v0.2:
 * Maven
 * Implementar scripts de creación de base de datos en DAO.
 * Añadido programa en JavaFx
+* Añadido colores a la salida estándar
+* Añadido otra temática sobre la tienda (ficheros json, modificaciones código) tanto java como javaFx.
+
 
 
 ## Autores:
