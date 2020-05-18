@@ -114,6 +114,12 @@ Los cambios para la v0.2:
 * Añadido otra temática sobre la tienda (ficheros json, modificaciones código) tanto java como javaFx.
 * Arreglado y añadido que comprueba si existe el id (solo funcional en tienda, no en javafx).
 
+## Dificultades del proyecto
+* Método idexistente, cambiamos el tipo void por boolean y luego llamamos al método en tienda.java. No dabamos con la solución hasta el último día de entrega.
+* La parte de JavaFx fue bastante engorrosa.
+* Quitar la información de spring de la salida del programa. (Ayuda del profesor)
+* Fallo de ResultSet en JDBCCompra.java.
+* La adaptación a un proyecto existente. Para ello necesitamos bastante información, de ahí el uso de README bien detallado.
 
 
 ## Autores:
