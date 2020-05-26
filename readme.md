@@ -121,6 +121,11 @@ Los cambios para la v0.2:
 * Fallo de ResultSet en JDBCCompra.java.
 * La adaptación a un proyecto existente. Para ello necesitamos bastante información, de ahí el uso de README bien detallado.
 
+## Parte 2 del proyecto
+* Nuevas tablas insertadas para tener más orden (aunque salen algunos errores)
+* Dificultad en lo que se pide (bastantes tablas)
+* Error en fecha en MySql
+* Esta parte nos ha resultado bastante complicada
 
 ## Autores:
 * **Robert Marius Puiu** - *Initial work* - *Enlazamiento entre código, mejoras y agregado de código adicional.*

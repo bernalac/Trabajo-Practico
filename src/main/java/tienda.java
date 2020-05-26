@@ -136,8 +136,8 @@ public class tienda{
 						c.getArt().setPrecio(preciop * cant);//setteo de precio por cantidad (precio final por producto)
 						c.setCant(cant);//setteo de cantidad
 						c.getPer().setName(p.getName());//setteo de la persona dentro de la clase Compra
-						Date fechaFactura = new Date();//Creación de fecha
-						c.setFecha(fechaFactura);//setteo a la compra de fecha/hora
+						//Date fechaFactura = new Date();//Creación de fecha
+						//c.setFecha(fechaFactura);//setteo a la compra de fecha/hora
 						lista1.add(c);//añadido de la compra a la lista
 						daocompra.grabar(c);//se guarda en la base de datos
 					}
@@ -158,8 +158,8 @@ public class tienda{
 						c.getArt().setPrecio(preciop * cant);//setteo de precio por cantidad (precio final por producto)
 						c.setCant(cant);//setteo de cantidad
 						c.getPer().setName(p.getName());//setteo de la persona dentro de la clase Compra
-						Date fechaFactura = new Date();//Creación de fecha
-						c.setFecha(fechaFactura);//setteo a la compra de fecha/hora
+						//Date fechaFactura = new Date();//Creación de fecha
+						//c.setFecha(fechaFactura);//setteo a la compra de fecha/hora
 						lista1.add(c);//añadido de la compra a la lista
 						daocompra.grabar(c);//se guarda en la base de datos
 					}
